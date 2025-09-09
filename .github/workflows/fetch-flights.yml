@@ -1,0 +1,45 @@
+name: Fetch Flights & Publish Dashboard
+
+on:
+  schedule:
+    - cron: '0 6,18 * * *'  # twice daily (UTC) - change if needed
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip && pip install -r requirements.txt
+
+      - name: Fetch flights (RapidAPI)
+        env:
+          RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
+        run: |
+          python scripts/fetch_flights.py
+
+      - name: Process response
+        run: |
+          python scripts/process_response.py
+
+      - name: Generate static dashboard
+        run: |
+          python scripts/generate_dashboard.py
+
+      - name: Deploy to GitHub Pages (publish dashboard/)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dashboard
+          publish_branch: gh-pages

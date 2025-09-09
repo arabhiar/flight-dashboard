@@ -1,0 +1,13 @@
+{
+  "fromId": "BLR.AIRPORT",
+  "toId": "IXR.AIRPORT",
+  "departDate": "2025-10-16",
+  "returnDate": null,
+  "stops": "none",
+  "pageNo": 1,
+  "adults": 1,
+  "children": "",
+  "sort": "CHEAPEST",
+  "cabinClass": "ECONOMY",
+  "currency_code": "INR"
+}

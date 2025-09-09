@@ -1,0 +1,189 @@
+{
+  "totalFlights": 101,
+  "filteredFlights": 101,
+  "minPrice": 11453,
+  "durationMin": 3,
+  "durationMax": 35,
+  "stops": [
+    {
+      "numberOfStops": 0,
+      "count": 7,
+      "cheapestAirline": "Air India Express",
+      "minPrice": 11453
+    },
+    {
+      "numberOfStops": 1,
+      "count": 83,
+      "cheapestAirline": "IndiGo",
+      "minPrice": 11453
+    },
+    {
+      "numberOfStops": 2,
+      "count": 93,
+      "cheapestAirline": "IndiGo",
+      "minPrice": 11453
+    },
+    {
+      "numberOfStops": 3,
+      "count": 101,
+      "cheapestAirline": "IndiGo",
+      "minPrice": 11453
+    }
+  ],
+  "airlines": [
+    {
+      "name": "Air India",
+      "count": 66,
+      "minPrice": 13671,
+      "minPricePerAdult": 13679
+    },
+    {
+      "name": "Air India Express",
+      "count": 6,
+      "minPrice": 11453,
+      "minPricePerAdult": 11473
+    },
+    {
+      "name": "Akasa Air",
+      "count": 1,
+      "minPrice": 20470,
+      "minPricePerAdult": 20475
+    },
+    {
+      "name": "IndiGo",
+      "count": 33,
+      "minPrice": 12744,
+      "minPricePerAdult": 12797
+    }
+  ],
+  "departureSlots": [
+    {
+      "start": "00:00",
+      "count": 8
+    },
+    {
+      "start": "06:00",
+      "count": 34
+    },
+    {
+      "start": "12:00",
+      "count": 29
+    },
+    {
+      "start": "18:00",
+      "count": 30
+    }
+  ],
+  "topOffers": [
+    {
+      "price": 11453,
+      "airline": "Air India Express",
+      "from": "Bangalore",
+      "to": "R\u0101nch\u012b",
+      "from_code": "BLR",
+      "to_code": "IXR",
+      "departure_time": "2025-10-16T07:20:00",
+      "arrival_time": "2025-10-16T09:45:00",
+      "duration_minutes": 145
+    },
+    {
+      "price": 12744,
+      "airline": "IndiGo",
+      "from": "Bangalore",
+      "to": "R\u0101nch\u012b",
+      "from_code": "BLR",
+      "to_code": "IXR",
+      "departure_time": "2025-10-16T12:35:00",
+      "arrival_time": "2025-10-16T20:30:00",
+      "duration_minutes": 475
+    },
+    {
+      "price": 13671,
+      "airline": "Air India",
+      "from": "Bangalore",
+      "to": "R\u0101nch\u012b",
+      "from_code": "BLR",
+      "to_code": "IXR",
+      "departure_time": "2025-10-16T07:20:00",
+      "arrival_time": "2025-10-16T09:45:00",
+      "duration_minutes": 145
+    },
+    {
+      "price": 13785,
+      "airline": "IndiGo",
+      "from": "Bangalore",
+      "to": "R\u0101nch\u012b",
+      "from_code": "BLR",
+      "to_code": "IXR",
+      "departure_time": "2025-10-16T12:55:00",
+      "arrival_time": "2025-10-16T18:40:00",
+      "duration_minutes": 345
+    },
+    {
+      "price": 13785,
+      "airline": "IndiGo",
+      "from": "Bangalore",
+      "to": "R\u0101nch\u012b",
+      "from_code": "BLR",
+      "to_code": "IXR",
+      "departure_time": "2025-10-16T10:45:00",
+      "arrival_time": "2025-10-16T18:40:00",
+      "duration_minutes": 475
+    },
+    {
+      "price": 14453,
+      "airline": "IndiGo",
+      "from": "Bangalore",
+      "to": "R\u0101nch\u012b",
+      "from_code": "BLR",
+      "to_code": "IXR",
+      "departure_time": "2025-10-16T10:10:00",
+      "arrival_time": "2025-10-16T20:30:00",
+      "duration_minutes": 620
+    },
+    {
+      "price": 15384,
+      "airline": "IndiGo",
+      "from": "Bangalore",
+      "to": "R\u0101nch\u012b",
+      "from_code": "BLR",
+      "to_code": "IXR",
+      "departure_time": "2025-10-16T12:35:00",
+      "arrival_time": "2025-10-16T20:45:00",
+      "duration_minutes": 490
+    },
+    {
+      "price": 15384,
+      "airline": "IndiGo",
+      "from": "Bangalore",
+      "to": "R\u0101nch\u012b",
+      "from_code": "BLR",
+      "to_code": "IXR",
+      "departure_time": "2025-10-16T12:35:00",
+      "arrival_time": "2025-10-17T07:20:00",
+      "duration_minutes": 1125
+    },
+    {
+      "price": 15866,
+      "airline": "IndiGo",
+      "from": "Bangalore",
+      "to": "R\u0101nch\u012b",
+      "from_code": "BLR",
+      "to_code": "IXR",
+      "departure_time": "2025-10-16T12:35:00",
+      "arrival_time": "2025-10-17T15:05:00",
+      "duration_minutes": 1590
+    },
+    {
+      "price": 16283,
+      "airline": "IndiGo",
+      "from": "Bangalore",
+      "to": "R\u0101nch\u012b",
+      "from_code": "BLR",
+      "to_code": "IXR",
+      "departure_time": "2025-10-16T18:25:00",
+      "arrival_time": "2025-10-17T19:10:00",
+      "duration_minutes": 1485
+    }
+  ]
+}

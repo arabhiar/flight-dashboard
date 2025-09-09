@@ -1,0 +1,6 @@
+requests
+pandas
+plotly
+jinja2
+python-dateutil
+python-dotenv
