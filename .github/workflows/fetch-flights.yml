@@ -2,7 +2,7 @@ name: Fetch Flights & Publish Dashboard
 
 on:
   schedule:
-    - cron: '0 6,18 * * *'  # twice daily (UTC) - change if needed
+    - cron: "30 2,9,16 * * *"  # twice daily (UTC) - change if needed
   workflow_dispatch:
 
 permissions:
