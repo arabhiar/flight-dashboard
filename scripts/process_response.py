@@ -8,7 +8,7 @@ Reads data/raw/response.json and produces:
 
 import json
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 import csv
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -19,6 +19,9 @@ PROC_DIR.mkdir(parents=True, exist_ok=True)
 HIST_DIR.mkdir(parents=True, exist_ok=True)
 SUMMARY_FILE = PROC_DIR / "summary.json"
 HISTORY_CSV = HIST_DIR / "price_log.csv"
+
+# IST timezone (UTC+5:30)
+IST = timezone(timedelta(hours=5, minutes=30))
 
 def extract_airline(seg):
     try:
@@ -131,8 +134,8 @@ def append_history(min_price):
     with open(HISTORY_CSV, "a", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         if write_header:
-            writer.writerow(["date_utc", "min_price"])
-        writer.writerow([datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"), min_price])
+            writer.writerow(["date_ist", "min_price"])
+        writer.writerow([datetime.now(IST).strftime("%Y-%m-%dT%H:%M:%S%z"), min_price])
     print(f"Appended history to {HISTORY_CSV}")
 
 def main():

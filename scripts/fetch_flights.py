@@ -9,7 +9,7 @@ import os
 import json
 from pathlib import Path
 import requests
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -23,6 +23,9 @@ RAW_DIR.mkdir(parents=True, exist_ok=True)
 OUT_FILE = RAW_DIR / "response.json"
 
 RAPIDAPI_KEY = os.getenv("RAPIDAPI_KEY")  # set as GitHub Actions secret
+
+# IST timezone (UTC+5:30)
+IST = timezone(timedelta(hours=5, minutes=30))
 
 def load_query():
     if not CONFIG_PATH.exists():
@@ -56,7 +59,7 @@ def call_api(params):
 
 def save_raw(resp):
     meta = {
-        "fetched_at": datetime.utcnow().isoformat() + "Z"
+        "fetched_at": datetime.now(IST).isoformat()
     }
     with open(OUT_FILE, "w", encoding="utf-8") as f:
         json.dump({"meta": meta, "response": resp}, f, indent=2)

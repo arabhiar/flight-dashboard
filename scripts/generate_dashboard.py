@@ -11,7 +11,7 @@ Generates dashboard/index.html with embedded Plotly charts.
 
 import json
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 import pandas as pd
 import plotly.express as px
 from jinja2 import Template
@@ -23,6 +23,9 @@ HISTORY_CSV = ROOT / "data" / "history" / "price_log.csv"
 OUT_DIR = ROOT / "dashboard"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 OUT_HTML = OUT_DIR / "index.html"
+
+# IST timezone (UTC+5:30)
+IST = timezone(timedelta(hours=5, minutes=30))
 
 def load_json(path):
     with open(path, "r", encoding="utf-8") as f:
@@ -48,10 +51,15 @@ def build_departure_chart(slots):
 def build_history_chart(csv_path):
     if not csv_path.exists():
         return "<p>No history available</p>"
-    df = pd.read_csv(csv_path, parse_dates=["date_utc"])
+    df = pd.read_csv(csv_path)
     if df.empty:
         return "<p>No history data</p>"
-    fig = px.line(df, x="date_utc", y="min_price", title="Cheapest price over time (UTC)")
+    
+    # Handle both old UTC and new IST column names for backward compatibility
+    date_col = "date_ist" if "date_ist" in df.columns else "date_utc"
+    df[date_col] = pd.to_datetime(df[date_col])
+    
+    fig = px.line(df, x=date_col, y="min_price", title="Cheapest price over time (IST)")
     return fig.to_html(full_html=False, include_plotlyjs=False)
 
 TEMPLATE = Template("""
@@ -181,7 +189,7 @@ def main():
 
     html = TEMPLATE.render(
         query_str=json.dumps(query, indent=2),
-        ts=datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+        ts=datetime.now(IST).strftime("%Y-%m-%d %H:%M IST"),
         summary=summary,
         stops_chart=stops_chart,
         departure_chart=departure_chart,
