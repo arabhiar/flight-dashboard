@@ -6,20 +6,23 @@
   <title>Flight Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 24px; }
-    .card { border-radius: 8px; padding: 16px; margin-bottom: 20px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
+    body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 24px; background:#fafafa; }
+    h1 { margin-bottom:8px; }
+    .card { border-radius: 8px; padding: 16px; margin-bottom: 20px; background:white; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
     pre { background:#f6f8fa; padding:12px; border-radius:6px; overflow:auto; }
     table { border-collapse: collapse; width: 100%; }
     th, td { text-align:left; padding:8px; border-bottom:1px solid #eee; }
-    .top-metrics { display:flex; gap:16px; }
+    .top-metrics { display:flex; flex-wrap:wrap; gap:16px; }
     .metric { background:#fff; padding:12px; border-radius:8px; min-width:160px; box-shadow:0 1px 4px rgba(0,0,0,0.04);}
+    .metric strong { font-size:1.2em; color:#2c3e50;}
+    canvas { max-width: 100%; margin-top: 12px; }
   </style>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <h1>✈️ Flight Dashboard</h1>
   <div class="card">
-    <strong>Query (editable in repo at <code>config/query_params.json</code>)</strong>
+    <strong>Query</strong>
     <pre>{
   "fromId": "BLR.AIRPORT",
   "toId": "IXR.AIRPORT",
@@ -33,341 +36,94 @@
   "cabinClass": "ECONOMY",
   "currency_code": "INR"
 }</pre>
-    <small>Last generated: 2025-09-09 22:17 IST</small>
+    <small>Last generated: 2025-09-09 23:36 IST</small>
   </div>
 
   <div class="card top-metrics">
-    <div class="metric">
-      <h4>Cheapest price</h4>
-      <div><strong>₹12744</strong></div>
-    </div>
-    <div class="metric">
-      <h4>Total flights</h4>
-      <div>102</div>
-    </div>
-    <div class="metric">
-      <h4>Filtered flights</h4>
-      <div>102</div>
-    </div>
-    <div class="metric">
-      <h4>Duration range</h4>
-      <div>3 – 35 hrs</div>
-    </div>
+    <div class="metric"><h4>Cheapest overall</h4><strong>₹12737</strong></div>
+    <div class="metric"><h4>Cheapest non-stop</h4><strong>₹N/A</strong></div>
+    <div class="metric"><h4>Cheapest 1-stop</h4><strong>₹12737</strong></div>
+    <div class="metric"><h4>Cheapest multi-stop</h4><strong>₹16276</strong></div>
   </div>
 
-  <div class="card">
-    <h3>Stops breakdown</h3>
-    <div>                        <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.1.0.min.js" integrity="sha256-Ei4740bWZhaUTQuD6q9yQlgVCMPBz6CZWhevDYPv93A=" crossorigin="anonymous"></script>                <div id="823106e3-4919-4ab9-89d9-0679f8d746fa" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("823106e3-4919-4ab9-89d9-0679f8d746fa")) {                    Plotly.newPlot(                        "823106e3-4919-4ab9-89d9-0679f8d746fa",                        [{"customdata":[["Air India Express",13671],["IndiGo",12744],["IndiGo",12744],["IndiGo",12744]],"hovertemplate":"stops=%{x}\u003cbr\u003eflights=%{y}\u003cbr\u003echeapestAirline=%{customdata[0]}\u003cbr\u003emin_price=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":{"dtype":"i1","bdata":"AAECAw=="},"xaxis":"x","y":{"dtype":"i1","bdata":"B1NhZg=="},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"stops"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"flights"}},"legend":{"tracegroupgap":0},"title":{"text":"Flights by # of stops"},"barmode":"relative"},                        {"responsive": true}                    )                };            </script>        </div>
-  </div>
-
-  <div class="card">
-    <h3>Departure time slots</h3>
-    <div>                            <div id="8ed1b012-346b-45a0-b130-7488f8110972" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("8ed1b012-346b-45a0-b130-7488f8110972")) {                    Plotly.newPlot(                        "8ed1b012-346b-45a0-b130-7488f8110972",                        [{"hovertemplate":"slot=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":["00:00","06:00","12:00","18:00"],"xaxis":"x","y":{"dtype":"i1","bdata":"CSEeHg=="},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"slot"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"count"}},"legend":{"tracegroupgap":0},"title":{"text":"Departure time slots"},"barmode":"relative"},                        {"responsive": true}                    )                };            </script>        </div>
-  </div>
-
-  <div class="card">
-    <h3>Price history</h3>
-    <div>                            <div id="b1dbac05-6b23-41e0-b6a1-5d02a12ca32a" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("b1dbac05-6b23-41e0-b6a1-5d02a12ca32a")) {                    Plotly.newPlot(                        "b1dbac05-6b23-41e0-b6a1-5d02a12ca32a",                        [{"hovertemplate":"date_utc=%{x}\u003cbr\u003emin_price=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","line":{"color":"#636efa","dash":"solid"},"marker":{"symbol":"circle"},"mode":"lines","name":"","orientation":"v","showlegend":false,"x":["2025-09-09T14:45:44+00:00","2025-09-09T15:03:16+00:00","2025-09-09T22:17:09+05:30"],"xaxis":"x","y":{"dtype":"i2","bdata":"vSy9LMgx"},"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"date_utc"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"min_price"}},"legend":{"tracegroupgap":0},"title":{"text":"Cheapest price over time (IST)"}},                        {"responsive": true}                    )                };            </script>        </div>
-  </div>
-
-  <div class="card">
-    <h3>Top Offers (sample)</h3>
-    
+  <div class='card'><h3>Top 5 Non-stop Flights</h3><p>No flights available</p></div>
+  
+    <div class="card">
+      <h3>Top 5 One-stop Flights</h3>
       <table>
-        <thead><tr><th>Airline</th><th>From</th><th>To</th><th>Departure</th><th>Arrival</th><th>Price</th></tr></thead>
-        <tbody>
-        
-          <tr>
-            <td>IndiGo</td>
-            <td>Bangalore (BLR)</td>
-            <td>Rānchī (IXR)</td>
-            <td>2025-10-16T12:35:00</td>
-            <td>2025-10-16T20:30:00</td>
-            <td>₹12744</td>
-          </tr>
-        
-          <tr>
-            <td>Air India</td>
-            <td>Bangalore (BLR)</td>
-            <td>Rānchī (IXR)</td>
-            <td>2025-10-16T07:20:00</td>
-            <td>2025-10-16T09:45:00</td>
-            <td>₹13671</td>
-          </tr>
-        
-          <tr>
-            <td>IndiGo</td>
-            <td>Bangalore (BLR)</td>
-            <td>Rānchī (IXR)</td>
-            <td>2025-10-16T12:55:00</td>
-            <td>2025-10-16T18:40:00</td>
-            <td>₹13785</td>
-          </tr>
-        
-          <tr>
-            <td>IndiGo</td>
-            <td>Bangalore (BLR)</td>
-            <td>Rānchī (IXR)</td>
-            <td>2025-10-16T10:45:00</td>
-            <td>2025-10-16T18:40:00</td>
-            <td>₹13785</td>
-          </tr>
-        
-          <tr>
-            <td>IndiGo</td>
-            <td>Bangalore (BLR)</td>
-            <td>Rānchī (IXR)</td>
-            <td>2025-10-16T12:35:00</td>
-            <td>2025-10-16T20:45:00</td>
-            <td>₹15384</td>
-          </tr>
-        
-          <tr>
-            <td>IndiGo</td>
-            <td>Bangalore (BLR)</td>
-            <td>Rānchī (IXR)</td>
-            <td>2025-10-16T12:35:00</td>
-            <td>2025-10-17T07:20:00</td>
-            <td>₹15384</td>
-          </tr>
-        
-          <tr>
-            <td>IndiGo</td>
-            <td>Bangalore (BLR)</td>
-            <td>Rānchī (IXR)</td>
-            <td>2025-10-16T10:10:00</td>
-            <td>2025-10-16T20:30:00</td>
-            <td>₹15520</td>
-          </tr>
-        
-          <tr>
-            <td>IndiGo</td>
-            <td>Bangalore (BLR)</td>
-            <td>Rānchī (IXR)</td>
-            <td>2025-10-16T12:35:00</td>
-            <td>2025-10-17T15:05:00</td>
-            <td>₹15866</td>
-          </tr>
-        
-          <tr>
-            <td>IndiGo</td>
-            <td>Bangalore (BLR)</td>
-            <td>Rānchī (IXR)</td>
-            <td>2025-10-16T18:25:00</td>
-            <td>2025-10-17T19:10:00</td>
-            <td>₹16283</td>
-          </tr>
-        
-          <tr>
-            <td>IndiGo</td>
-            <td>Bangalore (BLR)</td>
-            <td>Rānchī (IXR)</td>
-            <td>2025-10-16T16:45:00</td>
-            <td>2025-10-17T19:10:00</td>
-            <td>₹16283</td>
-          </tr>
-        
-        </tbody>
+        <thead><tr><th>Airline</th><th>From</th><th>To</th><th>Departure</th><th>Arrival</th><th>Price</th><th>Stops</th></tr></thead>
+        <tbody><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T12:35:00</td><td>2025-10-16T20:30:00</td><td>₹12737</td><td>1 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T12:55:00</td><td>2025-10-16T18:40:00</td><td>₹13779</td><td>1 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T10:45:00</td><td>2025-10-16T18:40:00</td><td>₹13779</td><td>1 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T10:10:00</td><td>2025-10-16T20:30:00</td><td>₹15513</td><td>1 stops</td></tr></tbody>
       </table>
+    </div>
     
+  
+    <div class="card">
+      <h3>Top 5 Multi-stop Flights</h3>
+      <table>
+        <thead><tr><th>Airline</th><th>From</th><th>To</th><th>Departure</th><th>Arrival</th><th>Price</th><th>Stops</th></tr></thead>
+        <tbody><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T12:35:00</td><td>2025-10-16T20:45:00</td><td>₹16276</td><td>2 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T12:35:00</td><td>2025-10-17T07:20:00</td><td>₹16276</td><td>2 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T18:25:00</td><td>2025-10-17T19:10:00</td><td>₹16283</td><td>3 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T16:45:00</td><td>2025-10-17T19:10:00</td><td>₹16283</td><td>3 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T12:35:00</td><td>2025-10-17T19:10:00</td><td>₹16283</td><td>3 stops</td></tr></tbody>
+      </table>
+    </div>
+    
+
+  <div class="card">
+    <h2>Stops breakdown</h2>
+    <canvas id="stopsChart"></canvas>
   </div>
 
   <div class="card">
-    <details>
-      <summary>Raw summary JSON (expand)</summary>
-      <pre>{
-  "totalFlights": 102,
-  "filteredFlights": 102,
-  "minPrice": 12744,
-  "durationMin": 3,
-  "durationMax": 35,
-  "stops": [
-    {
-      "numberOfStops": 0,
-      "count": 7,
-      "cheapestAirline": "Air India Express",
-      "minPrice": 13671
-    },
-    {
-      "numberOfStops": 1,
-      "count": 83,
-      "cheapestAirline": "IndiGo",
-      "minPrice": 12744
-    },
-    {
-      "numberOfStops": 2,
-      "count": 97,
-      "cheapestAirline": "IndiGo",
-      "minPrice": 12744
-    },
-    {
-      "numberOfStops": 3,
-      "count": 102,
-      "cheapestAirline": "IndiGo",
-      "minPrice": 12744
-    }
-  ],
-  "airlines": [
-    {
-      "name": "Air India",
-      "count": 67,
-      "minPrice": 13671,
-      "minPricePerAdult": 13679
-    },
-    {
-      "name": "Air India Express",
-      "count": 6,
-      "minPrice": 16927,
-      "minPricePerAdult": 16945
-    },
-    {
-      "name": "Akasa Air",
-      "count": 1,
-      "minPrice": 22347,
-      "minPricePerAdult": 22417
-    },
-    {
-      "name": "IndiGo",
-      "count": 33,
-      "minPrice": 12744,
-      "minPricePerAdult": 12797
-    }
-  ],
-  "departureSlots": [
-    {
-      "start": "00:00",
-      "count": 9
-    },
-    {
-      "start": "06:00",
-      "count": 33
-    },
-    {
-      "start": "12:00",
-      "count": 30
-    },
-    {
-      "start": "18:00",
-      "count": 30
-    }
-  ],
-  "topOffers": [
-    {
-      "price": 12744,
-      "airline": "IndiGo",
-      "from": "Bangalore",
-      "to": "R\u0101nch\u012b",
-      "from_code": "BLR",
-      "to_code": "IXR",
-      "departure_time": "2025-10-16T12:35:00",
-      "arrival_time": "2025-10-16T20:30:00",
-      "duration_minutes": 475
-    },
-    {
-      "price": 13671,
-      "airline": "Air India",
-      "from": "Bangalore",
-      "to": "R\u0101nch\u012b",
-      "from_code": "BLR",
-      "to_code": "IXR",
-      "departure_time": "2025-10-16T07:20:00",
-      "arrival_time": "2025-10-16T09:45:00",
-      "duration_minutes": 145
-    },
-    {
-      "price": 13785,
-      "airline": "IndiGo",
-      "from": "Bangalore",
-      "to": "R\u0101nch\u012b",
-      "from_code": "BLR",
-      "to_code": "IXR",
-      "departure_time": "2025-10-16T12:55:00",
-      "arrival_time": "2025-10-16T18:40:00",
-      "duration_minutes": 345
-    },
-    {
-      "price": 13785,
-      "airline": "IndiGo",
-      "from": "Bangalore",
-      "to": "R\u0101nch\u012b",
-      "from_code": "BLR",
-      "to_code": "IXR",
-      "departure_time": "2025-10-16T10:45:00",
-      "arrival_time": "2025-10-16T18:40:00",
-      "duration_minutes": 475
-    },
-    {
-      "price": 15384,
-      "airline": "IndiGo",
-      "from": "Bangalore",
-      "to": "R\u0101nch\u012b",
-      "from_code": "BLR",
-      "to_code": "IXR",
-      "departure_time": "2025-10-16T12:35:00",
-      "arrival_time": "2025-10-16T20:45:00",
-      "duration_minutes": 490
-    },
-    {
-      "price": 15384,
-      "airline": "IndiGo",
-      "from": "Bangalore",
-      "to": "R\u0101nch\u012b",
-      "from_code": "BLR",
-      "to_code": "IXR",
-      "departure_time": "2025-10-16T12:35:00",
-      "arrival_time": "2025-10-17T07:20:00",
-      "duration_minutes": 1125
-    },
-    {
-      "price": 15520,
-      "airline": "IndiGo",
-      "from": "Bangalore",
-      "to": "R\u0101nch\u012b",
-      "from_code": "BLR",
-      "to_code": "IXR",
-      "departure_time": "2025-10-16T10:10:00",
-      "arrival_time": "2025-10-16T20:30:00",
-      "duration_minutes": 620
-    },
-    {
-      "price": 15866,
-      "airline": "IndiGo",
-      "from": "Bangalore",
-      "to": "R\u0101nch\u012b",
-      "from_code": "BLR",
-      "to_code": "IXR",
-      "departure_time": "2025-10-16T12:35:00",
-      "arrival_time": "2025-10-17T15:05:00",
-      "duration_minutes": 1590
-    },
-    {
-      "price": 16283,
-      "airline": "IndiGo",
-      "from": "Bangalore",
-      "to": "R\u0101nch\u012b",
-      "from_code": "BLR",
-      "to_code": "IXR",
-      "departure_time": "2025-10-16T18:25:00",
-      "arrival_time": "2025-10-17T19:10:00",
-      "duration_minutes": 1485
-    },
-    {
-      "price": 16283,
-      "airline": "IndiGo",
-      "from": "Bangalore",
-      "to": "R\u0101nch\u012b",
-      "from_code": "BLR",
-      "to_code": "IXR",
-      "departure_time": "2025-10-16T16:45:00",
-      "arrival_time": "2025-10-17T19:10:00",
-      "duration_minutes": 1585
-    }
-  ]
-}</pre>
-    </details>
+    <h2>Departure time slots</h2>
+    <canvas id="slotsChart"></canvas>
   </div>
 
-  <footer style="margin-top:24px;color:#666;">Built: 2025-09-09 22:17 IST</footer>
+  <div class="card">
+    <h2>Price history</h2>
+    <canvas id="historyChart"></canvas>
+  </div>
+
+  <footer style="margin-top:24px;color:#666;">Built: 2025-09-09 23:36 IST</footer>
+
+<script>
+const stopsCtx = document.getElementById('stopsChart');
+new Chart(stopsCtx, {
+    type: 'bar',
+    data: {
+        labels: ['0', '1', '2', '3'],
+        datasets: [{
+            label: 'Flights',
+            data: [7, 83, 95, 101],
+            backgroundColor: 'rgba(54, 162, 235, 0.7)'
+        }]
+    }
+});
+
+const slotsCtx = document.getElementById('slotsChart');
+new Chart(slotsCtx, {
+    type: 'bar',
+    data: {
+        labels: ['00:00', '06:00', '12:00', '18:00'],
+        datasets: [{
+            label: 'Flights',
+            data: [8, 33, 29, 31],
+            backgroundColor: 'rgba(255, 159, 64, 0.7)'
+        }]
+    }
+});
+
+const historyCtx = document.getElementById('historyChart');
+new Chart(historyCtx, {
+    type: 'line',
+    data: {
+        labels: ['2025-09-09T14:45:44Z', '2025-09-09T15:03:16Z', '2025-09-09T23:36:32+0530'],
+        datasets: [{
+            label: 'Min Price (₹)',
+            data: [11453, 11453, 12737],
+            borderColor: 'rgba(75, 192, 192, 1)',
+            fill: false
+        }]
+    }
+});
+</script>
+
 </body>
 </html>
