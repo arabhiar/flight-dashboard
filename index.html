@@ -36,26 +36,18 @@
   "cabinClass": "ECONOMY",
   "currency_code": "INR"
 }</pre>
-    <small>Last generated: 2025-09-13 22:09 IST</small>
+    <small>Last generated: 2025-09-14 08:51 IST</small>
   </div>
 
   <div class="card top-metrics">
-    <div class="metric"><h4>Cheapest overall</h4><strong>₹13736</strong></div>
+    <div class="metric"><h4>Cheapest overall</h4><strong>₹N/A</strong></div>
     <div class="metric"><h4>Cheapest non-stop</h4><strong>₹N/A</strong></div>
-    <div class="metric"><h4>Cheapest 1-stop</h4><strong>₹13736</strong></div>
+    <div class="metric"><h4>Cheapest 1-stop</h4><strong>₹N/A</strong></div>
     <div class="metric"><h4>Cheapest multi-stop</h4><strong>₹N/A</strong></div>
   </div>
 
   <div class='card'><h3>Top 5 Non-stop Flights</h3><p>No flights available</p></div>
-  
-    <div class="card">
-      <h3>Top 5 One-stop Flights</h3>
-      <table>
-        <thead><tr><th>Airline</th><th>From</th><th>To</th><th>Departure</th><th>Arrival</th><th>Price</th><th>Stops</th></tr></thead>
-        <tbody><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T12:55:00</td><td>2025-10-16T18:40:00</td><td>₹13736</td><td>1 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T10:45:00</td><td>2025-10-16T18:40:00</td><td>₹13736</td><td>1 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T05:00:00</td><td>2025-10-16T15:05:00</td><td>₹15314</td><td>1 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T05:00:00</td><td>2025-10-16T20:45:00</td><td>₹15314</td><td>1 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T05:00:00</td><td>2025-10-17T07:20:00</td><td>₹15314</td><td>1 stops</td></tr></tbody>
-      </table>
-    </div>
-    
+  <div class='card'><h3>Top 5 One-stop Flights</h3><p>No flights available</p></div>
   <div class='card'><h3>Top 5 Multi-stop Flights</h3><p>No flights available</p></div>
 
   <div class="card">
@@ -73,17 +65,17 @@
     <canvas id="historyChart"></canvas>
   </div>
 
-  <footer style="margin-top:24px;color:#666;">Built: 2025-09-13 22:09 IST</footer>
+  <footer style="margin-top:24px;color:#666;">Built: 2025-09-14 08:51 IST</footer>
 
 <script>
 const stopsCtx = document.getElementById('stopsChart');
 new Chart(stopsCtx, {
     type: 'bar',
     data: {
-        labels: ['0', '1', '2'],
+        labels: [],
         datasets: [{
             label: 'Flights',
-            data: [6, 96, 103],
+            data: [],
             backgroundColor: 'rgba(54, 162, 235, 0.7)'
         }]
     }
@@ -93,10 +85,10 @@ const slotsCtx = document.getElementById('slotsChart');
 new Chart(slotsCtx, {
     type: 'bar',
     data: {
-        labels: ['00:00', '06:00', '12:00', '18:00'],
+        labels: [],
         datasets: [{
             label: 'Flights',
-            data: [11, 34, 29, 29],
+            data: [],
             backgroundColor: 'rgba(255, 159, 64, 0.7)'
         }]
     }
@@ -106,10 +98,10 @@ const historyCtx = document.getElementById('historyChart');
 new Chart(historyCtx, {
     type: 'line',
     data: {
-        labels: ['2025-09-09T14:45:44Z', '2025-09-09T15:03:16Z', '2025-09-13T22:09:02+0530'],
+        labels: ['2025-09-09T14:45:44Z', '2025-09-09T15:03:16Z'],
         datasets: [{
             label: 'Min Price (₹)',
-            data: [11453, 11453, 13736],
+            data: [11453, 11453],
             borderColor: 'rgba(75, 192, 192, 1)',
             fill: false
         }]
