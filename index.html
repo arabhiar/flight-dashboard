@@ -36,14 +36,14 @@
   "cabinClass": "ECONOMY",
   "currency_code": "INR"
 }</pre>
-    <small>Last generated: 2025-09-15 22:15 IST</small>
+    <small>Last generated: 2025-09-16 08:38 IST</small>
   </div>
 
   <div class="card top-metrics">
-    <div class="metric"><h4>Cheapest overall</h4><strong>₹14378</strong></div>
+    <div class="metric"><h4>Cheapest overall</h4><strong>₹15384</strong></div>
     <div class="metric"><h4>Cheapest non-stop</h4><strong>₹N/A</strong></div>
-    <div class="metric"><h4>Cheapest 1-stop</h4><strong>₹14378</strong></div>
-    <div class="metric"><h4>Cheapest multi-stop</h4><strong>₹N/A</strong></div>
+    <div class="metric"><h4>Cheapest 1-stop</h4><strong>₹15636</strong></div>
+    <div class="metric"><h4>Cheapest multi-stop</h4><strong>₹15384</strong></div>
   </div>
 
   <div class='card'><h3>Top 5 Non-stop Flights</h3><p>No flights available</p></div>
@@ -52,11 +52,19 @@
       <h3>Top 5 One-stop Flights</h3>
       <table>
         <thead><tr><th>Airline</th><th>From</th><th>To</th><th>Departure</th><th>Arrival</th><th>Price</th><th>Stops</th></tr></thead>
-        <tbody><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T08:20:00</td><td>2025-10-16T15:05:00</td><td>₹14378</td><td>1 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T08:20:00</td><td>2025-10-16T20:45:00</td><td>₹14378</td><td>1 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T08:20:00</td><td>2025-10-17T07:20:00</td><td>₹14378</td><td>1 stops</td></tr><tr><td>Air India Express</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T13:15:00</td><td>2025-10-16T20:45:00</td><td>₹14434</td><td>1 stops</td></tr><tr><td>Air India Express</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T13:15:00</td><td>2025-10-17T07:20:00</td><td>₹14434</td><td>1 stops</td></tr></tbody>
+        <tbody><tr><td>Air India Express</td><td>Bengaluru (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T13:15:00</td><td>2025-10-16T20:45:00</td><td>₹15636</td><td>1 stops</td></tr><tr><td>Air India Express</td><td>Bengaluru (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T13:15:00</td><td>2025-10-17T07:20:00</td><td>₹15636</td><td>1 stops</td></tr><tr><td>IndiGo</td><td>Bengaluru (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T15:05:00</td><td>2025-10-16T20:45:00</td><td>₹15824</td><td>1 stops</td></tr><tr><td>IndiGo</td><td>Bengaluru (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T13:45:00</td><td>2025-10-16T20:45:00</td><td>₹15824</td><td>1 stops</td></tr><tr><td>IndiGo</td><td>Bengaluru (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T15:05:00</td><td>2025-10-17T07:20:00</td><td>₹15824</td><td>1 stops</td></tr></tbody>
       </table>
     </div>
     
-  <div class='card'><h3>Top 5 Multi-stop Flights</h3><p>No flights available</p></div>
+  
+    <div class="card">
+      <h3>Top 5 Multi-stop Flights</h3>
+      <table>
+        <thead><tr><th>Airline</th><th>From</th><th>To</th><th>Departure</th><th>Arrival</th><th>Price</th><th>Stops</th></tr></thead>
+        <tbody><tr><td>Air India Express</td><td>Bengaluru (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T06:15:00</td><td>2025-10-16T20:45:00</td><td>₹15384</td><td>2 stops</td></tr><tr><td>Air India Express</td><td>Bengaluru (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T06:15:00</td><td>2025-10-16T19:10:00</td><td>₹16076</td><td>2 stops</td></tr></tbody>
+      </table>
+    </div>
+    
 
   <div class="card">
     <h2>Stops breakdown</h2>
@@ -73,7 +81,7 @@
     <canvas id="historyChart"></canvas>
   </div>
 
-  <footer style="margin-top:24px;color:#666;">Built: 2025-09-15 22:15 IST</footer>
+  <footer style="margin-top:24px;color:#666;">Built: 2025-09-16 08:38 IST</footer>
 
 <script>
 const stopsCtx = document.getElementById('stopsChart');
@@ -83,7 +91,7 @@ new Chart(stopsCtx, {
         labels: ['0', '1', '2'],
         datasets: [{
             label: 'Flights',
-            data: [7, 93, 101],
+            data: [7, 47, 57],
             backgroundColor: 'rgba(54, 162, 235, 0.7)'
         }]
     }
@@ -96,7 +104,7 @@ new Chart(slotsCtx, {
         labels: ['00:00', '06:00', '12:00', '18:00'],
         datasets: [{
             label: 'Flights',
-            data: [12, 32, 31, 26],
+            data: [4, 26, 21, 6],
             backgroundColor: 'rgba(255, 159, 64, 0.7)'
         }]
     }
@@ -106,10 +114,10 @@ const historyCtx = document.getElementById('historyChart');
 new Chart(historyCtx, {
     type: 'line',
     data: {
-        labels: ['2025-09-09T14:45:44Z', '2025-09-09T15:03:16Z', '2025-09-15T22:15:23+0530'],
+        labels: ['2025-09-09T14:45:44Z', '2025-09-09T15:03:16Z', '2025-09-16T08:38:47+0530'],
         datasets: [{
             label: 'Min Price (₹)',
-            data: [11453, 11453, 14378],
+            data: [11453, 11453, 15384],
             borderColor: 'rgba(75, 192, 192, 1)',
             fill: false
         }]
