@@ -36,7 +36,7 @@
   "cabinClass": "ECONOMY",
   "currency_code": "INR"
 }</pre>
-    <small>Last generated: 2025-09-20 22:09 IST</small>
+    <small>Last generated: 2025-09-21 08:57 IST</small>
   </div>
 
   <div class="card top-metrics">
@@ -69,7 +69,7 @@
       <h3>Top 5 Multi-stop Flights</h3>
       <table>
         <thead><tr><th>Airline</th><th>From</th><th>To</th><th>Departure</th><th>Arrival</th><th>Price</th><th>Stops</th></tr></thead>
-        <tbody><tr><td>Air India Express</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T06:15:00</td><td>2025-10-16T20:45:00</td><td>₹15980</td><td>2 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T05:25:00</td><td>2025-10-16T20:45:00</td><td>₹16466</td><td>2 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T07:15:00</td><td>2025-10-16T20:45:00</td><td>₹16571</td><td>3 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T05:00:00</td><td>2025-10-16T20:45:00</td><td>₹16571</td><td>3 stops</td></tr><tr><td>Air India Express</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T10:25:00</td><td>2025-10-17T11:55:00</td><td>₹16884</td><td>2 stops</td></tr></tbody>
+        <tbody><tr><td>Air India Express</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T06:15:00</td><td>2025-10-16T20:45:00</td><td>₹15980</td><td>2 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T05:25:00</td><td>2025-10-16T20:45:00</td><td>₹16466</td><td>2 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T07:15:00</td><td>2025-10-16T20:45:00</td><td>₹16571</td><td>3 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T05:00:00</td><td>2025-10-16T20:45:00</td><td>₹16571</td><td>3 stops</td></tr><tr><td>IndiGo</td><td>Bangalore (BLR)</td><td>Rānchī (IXR)</td><td>2025-10-16T12:35:00</td><td>2025-10-17T07:20:00</td><td>₹17693</td><td>2 stops</td></tr></tbody>
       </table>
     </div>
     
@@ -89,7 +89,7 @@
     <canvas id="historyChart"></canvas>
   </div>
 
-  <footer style="margin-top:24px;color:#666;">Built: 2025-09-20 22:09 IST</footer>
+  <footer style="margin-top:24px;color:#666;">Built: 2025-09-21 08:57 IST</footer>
 
 <script>
 const stopsCtx = document.getElementById('stopsChart');
@@ -99,7 +99,7 @@ new Chart(stopsCtx, {
         labels: ['0', '1', '2', '3'],
         datasets: [{
             label: 'Flights',
-            data: [7, 85, 98, 100],
+            data: [7, 80, 89, 91],
             backgroundColor: 'rgba(54, 162, 235, 0.7)'
         }]
     }
@@ -112,7 +112,7 @@ new Chart(slotsCtx, {
         labels: ['00:00', '06:00', '12:00', '18:00'],
         datasets: [{
             label: 'Flights',
-            data: [16, 36, 21, 27],
+            data: [12, 33, 22, 24],
             backgroundColor: 'rgba(255, 159, 64, 0.7)'
         }]
     }
@@ -122,7 +122,7 @@ const historyCtx = document.getElementById('historyChart');
 new Chart(historyCtx, {
     type: 'line',
     data: {
-        labels: ['2025-09-09T14:45:44Z', '2025-09-09T15:03:16Z', '2025-09-20T22:09:24+0530'],
+        labels: ['2025-09-09T14:45:44Z', '2025-09-09T15:03:16Z', '2025-09-21T08:57:00+0530'],
         datasets: [{
             label: 'Min Price (₹)',
             data: [11453, 11453, 14963],
