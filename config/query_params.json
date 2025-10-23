@@ -1,7 +1,7 @@
 {
-  "fromId": "BLR.AIRPORT",
-  "toId": "IXR.AIRPORT",
-  "departDate": "2025-10-16",
+  "fromId": "IXR.AIRPORT",
+  "toId": "BLR.AIRPORT",
+  "departDate": "2025-11-04",
   "returnDate": null,
   "stops": "none",
   "pageNo": 1,
